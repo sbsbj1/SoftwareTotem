@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagar Reserva</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+    
+    <style>
+        body{
+            font-family: Arial;
+        }
+
+        .error-control{
+            border: 1px solid red;
+        }
+
+        label.error{
+            color: red;
+            width: 200px;
+            font-size: 0.8em;
+            margin-top: -5px;
+            margin-bottom: 10px;
+        }
+    </style>
+
+<script>
+/* 
+    $(function() 
+    {
+      $("#formulario").validate({
+           rules: {
+                  email: {
+                        rut: "required",
+                        nombre: "required",
+                        apellido: "required",
+                        region: "required",
+                  }   
+                  
+              }, //rules
+          messages: {
+              rut: {
+                  required: 'Ingrese rut del vehiculo ',
+              },
+              nombre: {
+                  required: 'Ingrese nombre del vehiculo',
+              },
+              apellido:{
+                  required: 'Ingrese apellido del vehiculo',
+              },
+              region:{
+                  required: 'Seleccione una region',
+              },
+          }//messages
+      }); //$('#mi-formulario').validate
+  }); //function */
+</script>
+</head>
+<body>
+    <div class="container">
+        <h2>Modificando Clientes</h2><br>
+
+        <form method="POST" action="#" id="formulario">
+            {% csrf_token %}
+            <div class="form-group">
+                {{form.rut.label}}
+                {{form.rut}}
+            </div>
+
+            <div class="form-group">
+                {{form.nombre.label}}
+                {{form.nombre}}
+            </div>
+
+            <div class="form-group">
+                {{form.apellido.label}}
+                {{form.apellido}}
+            </div>
+
+            <div class="form-group">
+                {{form.region.label}}
+                {{form.region}}
+            </div>
+            <div class="col-md-6 pt-5">
+                <div class="input-group mb-3">
+                    <label class="input-group-text" for="inputGroupSelect01">Seleccione su banco</label>
+                    <select class="form-select" id="inputGroupSelect01">
+                      <option selected>...</option>
+                      <option value="1">Banco De Chile</option>
+                      <option value="2">Banco Internacional</option>
+                      <option value="3">Scotiabank Chile</option>
+                      <option value="4">Banco de Credito E Inversiones</option>
+                      <option value="5">Banco BICE</option>
+                      <option value="6">HSBC Bank</option>
+                      <option value="7">Banco Santander Chile</option>
+                      <option value="8">Itaú Corpabanca</option>
+                      <option value="9">Banco Security</option>
+                      <option value="10">Banco Falabella</option>
+                      <option value="11">Banco Ripley</option>
+                      <option value="12">Banco Consorcio</option>
+                    </select>
+                  </div>
+                </div>
+
+                <input class="form-control" type="text" value="Total a pagar :$10.500" aria-label="Total a pagar :$10.500" readonly>
+            <br><br>
+            <a href="{% url 'ver' %}" class="btn btn-primary">Pagar</a>
+            <a href="{% url 'mostrar' %}" class="btn btn-success">Mostrar Clientes</a>
+        </form>
+    </div>
+</body>
+</html>
